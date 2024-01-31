@@ -1,0 +1,18 @@
+
+#Create table in database
+ php artisan make:model Company -m
+
+#Update table in Database
+ php artisan migrate
+
+#Create Controller
+ php artisan make:controller CompanyController
+
+#Create Factory
+ php artisan make:factory name{model}Factory
+
+#Create Seeder
+ php artisan make:seeder name
+
+#Create artisan db:seed
+ php artisan db:seed ใช้งาน seeder
