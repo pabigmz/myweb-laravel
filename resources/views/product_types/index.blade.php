@@ -29,12 +29,14 @@
                             <th scope="row">{{$loop->iteration}}</th>
                             <td>{{$product_type->product_types_name}}</td>
                             <td>
-                                <form action="#" method="post">
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                <form action="{{route('product_types.destroy',$product_type->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{route('product_types.show',$product_type->id)}}" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i> Show</a>
 
-                                    <a href="#" class="btn btn-warning  btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
+                                    <a href="{{route('product_types.edit',$product_type->id)}}" class="btn btn-warning  btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>
 
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="#"><i class="bi bi-trash"></i> Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure delete {{$product_type->name}}?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                             </td>
                         </tr>

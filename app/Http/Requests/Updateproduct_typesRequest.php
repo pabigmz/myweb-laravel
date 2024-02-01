@@ -11,7 +11,7 @@ class Updateproduct_typesRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class Updateproduct_typesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'product_types_name' => 'required|string|max:250'
         ];
     }
 }

@@ -18,6 +18,6 @@ class UsersController extends Controller
 
     public function delete($id){
         User::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->withSuccess('User deleted successfully');
     }
 }

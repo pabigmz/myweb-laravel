@@ -46,32 +46,40 @@ class ProductTypesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(product_types $product_types)
+    public function show(product_types $product_type) : View
     {
-        //
+        return view('product_types.show',[
+            'product_type' => $product_type
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(product_types $product_types)
+    public function edit(product_types $product_type) : View
     {
         //
+        return view('product_types.edit',[
+            'product_type' => $product_type
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updateproduct_typesRequest $request, product_types $product_types)
+    public function update(Updateproduct_typesRequest $request, product_types $product_type): RedirectResponse
     {
         //
+        $product_type -> update($request->all());
+        return redirect()->route('product_types.index')->withSuccess('Update Product Type Success fully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(product_types $product_types)
+    public function destroy(product_types $product_type) : RedirectResponse
     {
-        //
+        $product_type -> delete();
+        return redirect()->route('product_types.index')->withSuccess('Product Types is deleted Successfully.');
     }
 }
