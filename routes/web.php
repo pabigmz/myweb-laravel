@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductTypesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,9 @@ Route::resource('product_types', ProductTypesController::class);
 
 Route::resource('users', UsersController::class);
 
+Route::resource('products', ProductsController::class);
+
 Route::get('delete/{id}', [UsersController::class, 'delete'])->name('delete');
+
+
+

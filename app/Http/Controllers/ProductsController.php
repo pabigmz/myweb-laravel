@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\products;
+
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+
 use App\Http\Requests\StoreproductsRequest;
 use App\Http\Requests\UpdateproductsRequest;
 
@@ -11,9 +15,11 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() :View
     {
-        //
+        return view('products.index',[
+            'products' => products::latest()->paginate(3)
+        ]);
     }
 
     /**
