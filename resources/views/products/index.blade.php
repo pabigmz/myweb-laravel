@@ -1,4 +1,4 @@
-@extends('product_types.layouts')
+@extends('products.layouts')
 @section('title')
     Products
 @endsection
@@ -14,13 +14,14 @@
                 @endif
 
                 <div class="card">
-                    <div class="card-header">Users List</div>
-                    <div class="text text-center card-body">
-                        <table class="table table-striped table-bordered">
+                    <div class="card-header">Product List</div>
+                    <div class="card-body">
+                        <a href="{{route('products.create')}}" class="btn btn-success btn-smmy-2 mb-3"><i class="bi bi-plus-circle"></i> Add New Product Types</a>
+                        <table class="table table-striped table-bordered text text-center ">
                             <thead>
                                 <tr>
                                     <th scope="col">S#</th>
-                                    <th scope="col">Id</th>
+                                    <th scope="col">ID Products</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Cost</th>
                                     <th scope="col">Price</th>
@@ -32,7 +33,7 @@
                             </thead>
                             <tbody>
                   
-                                    @foreach ($products as $product)
+                                    @forelse ($products as $product)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{$product->id}}</td>
@@ -40,22 +41,28 @@
                                             <td>{{$product->cost}}</td>
                                             <td>{{$product->price}}</td>
                                             <td>{{$product->quantity}}</td>
-                                            <td>#</td>
+                                            <td><img src="{{URL::asset('/images/').'/'.$product->image}}" alt="100" height="100" width="100"></td>
                                             <td>{{$product->product_types_name}}</td>
                                             <td>
-                                                <a class="btn btn-primary" href="#">Edit</a>
-                                                <a class="btn btn-danger" href="#">Delete</a>
+                                                <form action="{{route('products.destroy',$product->id)}}" method="POST">
+                                                    <input type="hidden" value="{{$product->image}}" name="image" id="image">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a href="{{route('show',[$product->id,$product->product_types_id])}}" class="btn btn-primary "><i class="bi bi-eye"></i> Show</a>
+                                                    <a class="btn btn-warning" href="{{route('products.edit',$product->id)}}"><i class="bi bi-pencil-square"></i> Edit</a>
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
-                                    @endforeach
-                
-
-                                    
+                                        @empty
+                                            <td colspan="9">
+                                                <span class="text-danger">
+                                                    <strong>No Product Types Found!</strong>
+                                                </span>
+                                            </td>
+                                    @endforelse
                             </tbody>
                         </table>
-       
-
-
                     </div>
                 </div>
             </div>

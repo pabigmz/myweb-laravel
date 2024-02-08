@@ -35,5 +35,7 @@ Route::resource('products', ProductsController::class);
 
 Route::get('delete/{id}', [UsersController::class, 'delete'])->name('delete');
 
+Route::get('show/{id}{product_types_name}',[ProductsController::class, 'show'])->name('show');
+
 
 

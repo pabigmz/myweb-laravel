@@ -19,7 +19,7 @@ class ProductTypesController extends Controller
     {
         //
         return view('product_types.index', [
-            'product_types' => product_types::latest()->paginate(3)
+            'product_types' => product_types::latest()->paginate(5)
         ]);
 
     }

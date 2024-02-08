@@ -50,6 +50,7 @@
                         @endforelse
                     </tbody>
                   </table>
+                  {{ $product_types->links()}}
 
 
             </div>

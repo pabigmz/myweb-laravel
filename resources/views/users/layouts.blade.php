@@ -26,10 +26,10 @@
                     <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.index')}}">Users</a>
+                        <a class="nav-link active" href="{{ route('users.index')}}">Users</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link active" href="{{route('product_types.index')}}">Product Types</a>
+                        <a class="nav-link" href="{{route('product_types.index')}}">Product Types</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="{{route('products.index')}}">Products</a>

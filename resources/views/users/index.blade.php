@@ -1,4 +1,4 @@
-@extends('product_types.layouts')
+@extends('users.layouts')
 @section('title')
     Users
 @endsection
